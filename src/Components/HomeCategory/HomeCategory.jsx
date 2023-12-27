@@ -21,17 +21,17 @@ const HomeCategory = () => {
             </div>
           </div>
           <div className="home-category-section2">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            <ProductCard image="productCardBg" />
+            <ProductCard image="productCardBg2" />
+            <ProductCard image="productCardBg3" />
+            <ProductCard image="productCardBg4" />
           </div>
           <h2>Popular Items</h2>
           <div className="home-category-section2">
-            <PopularCard />
-            <PopularCard />
-            <PopularCard />
-            <PopularCard />
+            <PopularCard image="popularCard" />
+            <PopularCard image="popularCard2" />
+            <PopularCard image="popularCard3" />
+            <PopularCard image="popularCard4" />
           </div>
         </div>
       </div>

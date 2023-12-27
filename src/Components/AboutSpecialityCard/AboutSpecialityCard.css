@@ -21,3 +21,6 @@
   font-weight: 600;
   padding-bottom: 40px;
 }
+.about-speciality-card > img {
+  width: 140px;
+}

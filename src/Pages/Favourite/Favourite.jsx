@@ -8,22 +8,102 @@ const Favourite = () => {
         <div className="favourite-item">
           <h2>Favourites</h2>
           <div className="favourite-card-container">
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
+            <FavouriteCard
+              image="productItemBG.png"
+              price="200"
+              featured={false}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG1.png"
+              price="100"
+              featured={true}
+              priceoff={true}
+            />
+            <FavouriteCard
+              image="productItemBG.png"
+              price="200"
+              featured={true}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG1.png"
+              price="100"
+              featured={false}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG.png"
+              price="200"
+              featured={false}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG1.png"
+              price="100"
+              featured={true}
+              priceoff={true}
+            />
+            <FavouriteCard
+              image="productItemBG.png"
+              price="200"
+              featured={true}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG1.png"
+              price="100"
+              featured={false}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG.png"
+              price="200"
+              featured={false}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG1.png"
+              price="100"
+              featured={true}
+              priceoff={true}
+            />
+            <FavouriteCard
+              image="productItemBG.png"
+              price="200"
+              featured={true}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG1.png"
+              price="100"
+              featured={false}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG.png"
+              price="200"
+              featured={false}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG1.png"
+              price="100"
+              featured={true}
+              priceoff={true}
+            />
+            <FavouriteCard
+              image="productItemBG.png"
+              price="200"
+              featured={true}
+              priceoff={false}
+            />
+            <FavouriteCard
+              image="productItemBG1.png"
+              price="100"
+              featured={false}
+              priceoff={false}
+            />
           </div>
         </div>
       </div>

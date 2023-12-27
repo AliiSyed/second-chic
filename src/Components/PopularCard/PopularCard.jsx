@@ -1,14 +1,17 @@
 import React from "react";
 import "./PopularCard.css";
 import { useNavigate } from "react-router-dom";
-const PopularCard = () => {
+const PopularCard = ({ image }) => {
   const navigate = useNavigate();
   return (
     <div
       className="popular-card"
       onClick={() => navigate("/products/12345678/details")}
     >
-      <div className="popular-card-image">
+      <div
+        style={{ backgroundImage: `url(/images/${image}.png)` }}
+        className="popular-card-image"
+      >
         <img src="/images/heartIcon.png" alt="heartIcon.png" />
       </div>
       <div className="popular-card-text">
