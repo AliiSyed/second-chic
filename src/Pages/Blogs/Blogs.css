@@ -1,0 +1,33 @@
+.blog-sections {
+  display: flex;
+  margin-top: 80px;
+  gap: 40px;
+}
+.blog-left-section {
+  width: 70%;
+}
+.blog-right-section {
+  width: 30%;
+}
+.blog-right-section1 {
+  padding: 15px;
+  border: 2px solid gainsboro;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.blog-right-section1 > input {
+  border: none;
+  outline: none;
+  font-size: 20px;
+  width: calc(100% - 50px);
+  font-weight: 600;
+}
+.blog-right-section1 > svg {
+  height: 30px;
+  width: 30px;
+}
+.blog-right-section2 {
+  background-color: red;
+}
