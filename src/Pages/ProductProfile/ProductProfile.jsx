@@ -33,7 +33,7 @@ const ProductProfile = () => {
         <p className="product-profile-link-active">Wardrobe</p>
         <p>Evaluation</p>
       </div>
-      <div className="favourite-card-container">
+      <div className="favourite-card-container product-profile-container">
         <FavouriteCard
           image="productItemBG.png"
           price="200"

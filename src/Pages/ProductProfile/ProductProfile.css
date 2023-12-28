@@ -132,3 +132,14 @@
     font-size: 16px;
   }
 }
+@media (max-width: 3000px) and (min-width: 1600px) {
+  .product-profile-container {
+    grid-template-columns: auto auto auto auto auto !important;
+    gap: 0px;
+  }
+  .product-profile-container > div {
+    width: 300px;
+    margin: 10px;
+    gap: 20px;
+  }
+}
