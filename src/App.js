@@ -5,6 +5,8 @@ import { ToastContainer } from "react-toastify";
 import Home from "./Pages/Home/Home.jsx";
 import About from "./Pages/About/About.jsx";
 import Favourite from './Pages/Favourite/Favourite.jsx';
+import ProductShop from './Pages/ProductShop/ProductShop.jsx'
+import ProductProfile from './Pages/ProductProfile/ProductProfile.jsx';
 import ProductDetail from './Pages/ProductDetail/ProductDetail.jsx';
 import Blogs from './Pages/Blogs/Blogs.jsx';
 import TrackOrder from './Pages/TrackOrder/TrackOrder.jsx';
@@ -45,6 +47,8 @@ const App = () => {
           <Route path="/" element={<PageLayout><Home /></PageLayout>} />
           <Route path="/about" element={<PageLayout><About /></PageLayout>} />
           <Route path="/favourite" element={<PageLayout><Favourite /></PageLayout>} />
+          <Route path="/products" element={<PageLayout><ProductShop /></PageLayout>} />
+          <Route path="/products/profile" element={<PageLayout><ProductProfile /></PageLayout>} />
           <Route path="/products/:id/details" element={<PageLayout><ProductDetail /></PageLayout>} />
           <Route path="/blogs" element={<PageLayout><Blogs /></PageLayout>} />
           <Route path="/order/track" element={<PageLayout><TrackOrder /></PageLayout>} />

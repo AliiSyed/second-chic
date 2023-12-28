@@ -1,0 +1,81 @@
+.product-shop-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 60px;
+  width: 360px;
+  border: 2px solid gainsboro;
+  border-radius: 15px;
+  padding: 10px;
+}
+.product-shop-card > img {
+  align-self: self-start;
+}
+.product-shop-card > img:hover {
+  cursor: pointer;
+}
+.product-shop-card-image {
+  background-image: url("/public/images/popularCard.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 200px;
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  padding: 10px;
+}
+.product-shop-card-image > p {
+  background-color: var(--primary-color);
+  width: fit-content;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.product-shop-card-text > p,
+.product-shop-card-text > h6 {
+  text-align: center;
+  font-size: 14px;
+  color: #999999;
+  font-weight: 600;
+  width: 80%;
+  margin: auto;
+}
+.product-shop-card-text > h6 {
+  font-size: 18px;
+  color: #444444;
+}
+.product-shop-card-text > div {
+  display: flex;
+  padding-top: 10px;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+.product-shop-card-text > div > svg {
+  color: #999999;
+  width: 25px;
+  height: 25px;
+}
+.product-shop-card-text > div > p {
+  color: #999999;
+  font-weight: 600;
+}
+.yellowstars {
+  color: #fcca19 !important;
+}
+@media (max-width: 1250px) {
+  .product-shop-card {
+    width: 300px;
+  }
+}
+@media (max-width: 768px) {
+  .product-shop-card {
+    width: 100%;
+  }
+}

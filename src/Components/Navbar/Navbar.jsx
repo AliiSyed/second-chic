@@ -8,11 +8,11 @@ const Navbar = () => {
       <div className="my-container">
         <div className="navbar-item">
           <div>
-            <Link to={"/"}>Women</Link>
-            <Link to={"/"}>Men</Link>
-            <Link to={"/"}>Kids</Link>
-            <Link to={"/"}>Accessories</Link>
-            <Link to={"/"}>Luxury</Link>
+            <Link to={"/products"}>Women</Link>
+            <Link to={"/products"}>Men</Link>
+            <Link to={"/products"}>Kids</Link>
+            <Link to={"/products"}>Accessories</Link>
+            <Link to={"/products"}>Luxury</Link>
             <div>
               <div>
                 <img src="/images/messageIcon.png" alt="messageIcon.png" />
