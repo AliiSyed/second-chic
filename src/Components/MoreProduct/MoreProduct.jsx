@@ -1,10 +1,10 @@
 import React from "react";
 import { IoIosStar } from "react-icons/io";
 import "./MoreProduct.css";
-const MoreProduct = () => {
+const MoreProduct = ({ image }) => {
   return (
     <div className="more-prooducts">
-      <img src="/images/moreProduct1.png" alt="moreProduct1.png" />
+      <img src={`/images/${image}`} alt="moreProduct1.png" />
       <div>
         <div>
           <IoIosStar className="yellowstars" />

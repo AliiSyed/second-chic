@@ -1,10 +1,13 @@
 import React from "react";
 import "./RelatedProductCard.css";
 import { IoIosStar } from "react-icons/io";
-const RelatedProductCard = () => {
+const RelatedProductCard = ({ image }) => {
   return (
     <div className="related-product-card">
-      <div className="related-product-card-image">
+      <div
+        style={{ backgroundImage: `url(/images/${image})` }}
+        className="related-product-card-image"
+      >
         <p>FEATURED</p>
       </div>
       <div className="related-product-card-text">

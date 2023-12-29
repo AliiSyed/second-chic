@@ -334,9 +334,9 @@ const ProductDetail = () => {
           <div className="product-detail-content-left-section3">
             <h3>Related Products</h3>
             <div>
-              <RelatedProductCard />
-              <RelatedProductCard />
-              <RelatedProductCard />
+              <RelatedProductCard image="relatedProduct1.png" />
+              <RelatedProductCard image="relatedProduct2.png" />
+              <RelatedProductCard image="relatedProduct3.png" />
             </div>
           </div>
         </div>
@@ -388,12 +388,12 @@ const ProductDetail = () => {
           <div className="product-detail-content-right-section2">
             <h3>More Products From Them</h3>
             <div>
-              <MoreProduct />
-              <MoreProduct />
-              <MoreProduct />
-              <MoreProduct />
-              <MoreProduct />
-              <MoreProduct />
+              <MoreProduct image="moreProduct1.png" />
+              <MoreProduct image="moreProduct2.png" />
+              <MoreProduct image="moreProduct3.png" />
+              <MoreProduct image="moreProduct4.png" />
+              <MoreProduct image="moreProduct1.png" />
+              <MoreProduct image="moreProduct2.png" />
             </div>
           </div>
         </div>
