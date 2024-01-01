@@ -10,6 +10,7 @@ import ProductProfile from './Pages/ProductProfile/ProductProfile.jsx';
 import ProductDetail from './Pages/ProductDetail/ProductDetail.jsx';
 import Blogs from './Pages/Blogs/Blogs.jsx';
 import BlogDetail from './Pages/BlogDetail/BlogDetail.jsx';
+import Register from './Pages/Register/Register.jsx'
 import TrackOrder from './Pages/TrackOrder/TrackOrder.jsx';
 
 import Header from './Components/Header/Header.jsx'
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="/products/:id/details" element={<PageLayout><ProductDetail /></PageLayout>} />
           <Route path="/blogs" element={<PageLayout><Blogs /></PageLayout>} />
           <Route path="/blogs/:id" element={<PageLayout><BlogDetail /></PageLayout>} />
+          <Route path="/register" element={<PageLayout><Register /></PageLayout>} />
           <Route path="/order/track" element={<PageLayout><TrackOrder /></PageLayout>} />
 
         </Routes>

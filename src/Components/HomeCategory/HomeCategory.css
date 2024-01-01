@@ -24,8 +24,13 @@
   border: 1px solid gainsboro;
   border-radius: 10px;
   font-weight: 600;
+  transition: all 0.5s ease;
 }
 .home-category-section1 > div > button:hover {
+  background-color: black;
+  color: white;
+}
+.home-category-section1 > div > .active {
   background-color: black;
   color: white;
 }

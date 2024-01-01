@@ -15,9 +15,12 @@
 .product-card:hover {
   cursor: pointer;
 }
-.product-card > img {
-  margin: 25px 25px 0 0;
+.product-card > svg {
+  margin: 20px 20px 0 0;
+  width: 30px;
+  height: 30px;
 }
+
 .product-card > div {
   width: 100%;
   text-align: center;

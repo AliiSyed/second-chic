@@ -1,6 +1,8 @@
 import React from "react";
 import "./HomeBanner.css";
+import { useNavigate } from "react-router-dom";
 const HomeBanner = () => {
+  const navigate = useNavigate();
   return (
     <div className="home-banner">
       <div className="my-container">
@@ -10,7 +12,7 @@ const HomeBanner = () => {
           <h4>
             Keep perfect time with the contemporary expertly-crafted design
           </h4>
-          <button>SELL NOW</button>
+          <button onClick={() => navigate("/register")}>SELL NOW</button>
         </div>
       </div>
     </div>

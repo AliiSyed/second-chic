@@ -41,7 +41,7 @@ const Blogs = () => {
               <p>Grocery</p>
               <p>Lifestyle</p>
               <p>Interior Design</p>
-              <p>Design Production </p>
+              <p>Digital Production </p>
             </div>
             <div className="blog-right-section3">
               <h4>Popular Post</h4>

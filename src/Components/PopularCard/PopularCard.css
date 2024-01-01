@@ -5,7 +5,6 @@
   cursor: pointer;
 }
 .popular-card > div:first-child {
-  padding: 20px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
@@ -13,6 +12,11 @@
   height: 400px;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.popular-card > div:first-child > svg {
+  width: 25px;
+  height: 25px;
+  margin: 20px 20px 0 0;
 }
 .popular-card > div:last-child {
   padding: 10px 20px;

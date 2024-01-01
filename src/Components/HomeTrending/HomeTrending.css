@@ -7,7 +7,7 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0)),
     url("/public/images/trendingBg.png");
   width: 50%;
-  height: 600px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -32,6 +32,15 @@
   border-radius: 8px;
   font-weight: 700;
   font-size: 16px;
+  transition: all 0.5s ease;
+}
+.home-trending-card > div > button:hover {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+}
+.home-trending-card > div > button:active {
+  transform: scale(90%);
 }
 
 @media (max-width: 1250px) {
