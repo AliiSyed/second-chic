@@ -1,9 +1,10 @@
 import React from "react";
 import "./BlogCard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const BlogCard = ({ image }) => {
+  const navigate = useNavigate();
   return (
-    <div className="blog-card">
+    <div onClick={() => navigate("/blogs/123456789")} className="blog-card">
       <div className="blog-card-image">
         <img src={`/images/${image}`} alt={image} />
       </div>
