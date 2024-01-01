@@ -1,11 +1,11 @@
 import React from "react";
 import "./BlogCard.css";
 import { Link } from "react-router-dom";
-const BlogCard = () => {
+const BlogCard = ({ image }) => {
   return (
     <div className="blog-card">
       <div className="blog-card-image">
-        <img src="/images/blogCard.png" alt="blogCard.png" />
+        <img src={`/images/${image}`} alt={image} />
       </div>
       <div className="blog-card-text">
         <h5>
