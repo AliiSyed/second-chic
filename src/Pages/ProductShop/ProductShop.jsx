@@ -1,16 +1,178 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProductShop.css";
 import ProductShopCard from "../../Components/ProductShopCard/ProductShopCard.jsx";
 import Pagination from "../../Components/Pagination/Pagination.jsx";
 import { IoIosStar } from "react-icons/io";
+import productsData from "../../Data/product.json";
 const ProductShop = () => {
+  const [activeCategory, setActiveCategory] = useState("");
+  const [activeColor, setActiveColor] = useState("");
+  const [activeType, setActiveType] = useState([]);
+  const [activeMaterial, setActiveMaterial] = useState([]);
+  const [activeSize, setActiveSize] = useState([]);
+
+  const [filterData, setFilterData] = useState(productsData.products);
+
+  const [rating, setRating] = useState(0);
+
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(5000);
+
+  const handleFilteration = (
+    category,
+    minPrice,
+    maxPrice,
+    rating,
+    color,
+    type,
+    material,
+    size
+  ) => {
+    setFilterData(productsData.products);
+
+    let filteredData = productsData.products.filter((item) => {
+      console.log("size", size);
+      console.log("size", item.size);
+      console.log("size", size.includes(item.size) || size.length === 0);
+      return (
+        (item.category === category || category === "") &&
+        item.price >= minPrice &&
+        item.price <= maxPrice &&
+        item.rating >= rating &&
+        (item.color === color || color === "") &&
+        (type.includes(item.type) || type.length === 0) &&
+        (material.includes(item.material) || material.length === 0) &&
+        (size.includes(item.size) || size.length === 0)
+      );
+    });
+    setFilterData(filteredData);
+  };
+
+  const hanldeActivePrice = () => {
+    handleFilteration(
+      activeCategory,
+      minPrice,
+      maxPrice,
+      rating,
+      activeColor,
+      activeType,
+      activeMaterial,
+      activeSize
+    );
+  };
+
+  const handleActiveCategory = (e) => {
+    setActiveCategory(e.target.innerHTML);
+    handleFilteration(
+      e.target.innerHTML,
+      minPrice,
+      maxPrice,
+      rating,
+      activeColor,
+      activeType,
+      activeMaterial,
+      activeSize
+    );
+  };
+
+  const handleActiveRating = (value) => {
+    setRating(value);
+    handleFilteration(
+      activeCategory,
+      minPrice,
+      maxPrice,
+      value,
+      activeColor,
+      activeType,
+      activeMaterial,
+      activeSize
+    );
+  };
+
+  const handleActiveColor = (value) => {
+    setActiveColor(value);
+    handleFilteration(
+      activeCategory,
+      minPrice,
+      maxPrice,
+      rating,
+      value,
+      activeType,
+      activeMaterial,
+      activeSize
+    );
+  };
+
+  const handleActiveType = (value) => {
+    let newValue = activeType;
+    newValue = newValue.includes(value)
+      ? newValue.filter((item) => item !== value)
+      : [...newValue, value];
+    setActiveType(newValue);
+    handleFilteration(
+      activeCategory,
+      minPrice,
+      maxPrice,
+      rating,
+      activeColor,
+      newValue,
+      activeMaterial,
+      activeSize
+    );
+  };
+  const handleActiveMaterial = (value) => {
+    let newValue = activeMaterial;
+    newValue = newValue.includes(value)
+      ? newValue.filter((item) => item !== value)
+      : [...newValue, value];
+    setActiveMaterial(newValue);
+    handleFilteration(
+      activeCategory,
+      minPrice,
+      maxPrice,
+      rating,
+      activeColor,
+      activeType,
+      newValue,
+      activeSize
+    );
+  };
+  const handleActiveSize = (value) => {
+    let newValue = activeSize;
+    newValue = newValue.includes(value)
+      ? newValue.filter((item) => item !== value)
+      : [...newValue, value];
+    setActiveSize(newValue);
+    handleFilteration(
+      activeCategory,
+      minPrice,
+      maxPrice,
+      rating,
+      activeColor,
+      activeType,
+      activeMaterial,
+      newValue
+    );
+  };
+  const hanldleResetFilter = () => {
+    setFilterData(productsData.products);
+    setActiveCategory("");
+    setActiveColor("");
+    setActiveType([]);
+    setActiveMaterial([]);
+    setActiveSize([]);
+    setRating(0);
+    setMinPrice(0);
+    setMaxPrice(5000);
+  };
+
   return (
     <div className="my-container">
       <div className="product-shop">
         <div className="product-shop-filter">
           <div className="product-shop-filter-section1">
             <h4>FILTERS</h4>
-            <div>
+            <div onClick={hanldleResetFilter}>
               <p>Clear All</p>
               <svg
                 width="8"
@@ -36,17 +198,51 @@ const ProductShop = () => {
           </div>
           <h3>Realted Categories</h3>
           <div className="product-shop-filter-section2">
-            <h6>Uncategorized</h6>
-            <h6>Electronic Accessories</h6>
-            <h6>Women Fashion</h6>
-            <h6>Mobine Accessories</h6>
-            <h6>Computer Accessories</h6>
-            <h6>Electronic Devices</h6>
-            <h6>Babies & Toys</h6>
-            <h6>Kid Fashion</h6>
-            <h6>Fashion</h6>
-            <h6>
-              <b>See All</b>
+            <h6
+              onClick={handleActiveCategory}
+              style={
+                activeCategory === "Uncategorized" ? { color: "#444444" } : {}
+              }
+            >
+              Uncategorized
+            </h6>
+            <h6
+              onClick={handleActiveCategory}
+              style={
+                activeCategory === "Electronic Accessories"
+                  ? { color: "#444444" }
+                  : {}
+              }
+            >
+              Electronic Accessories
+            </h6>
+            <h6
+              onClick={handleActiveCategory}
+              style={
+                activeCategory === "Women Fashion" ? { color: "#444444" } : {}
+              }
+            >
+              Women Fashion
+            </h6>
+            <h6
+              onClick={handleActiveCategory}
+              style={
+                activeCategory === "Mobile Accessories"
+                  ? { color: "#444444" }
+                  : {}
+              }
+            >
+              Mobile Accessories
+            </h6>
+            <h6
+              onClick={handleActiveCategory}
+              style={
+                activeCategory === "Computer Accessories"
+                  ? { color: "#444444" }
+                  : {}
+              }
+            >
+              Computer Accessories
             </h6>
           </div>
           <h3>Price Range</h3>
@@ -54,84 +250,130 @@ const ProductShop = () => {
             <div>
               <div>
                 <p>Min.</p>
-                <input placeholder="0" type="number" />
+                <input
+                  onChange={(e) => setMinPrice(e.target.value)}
+                  value={minPrice}
+                  placeholder="0"
+                  type="number"
+                />
               </div>
               <div>
                 <p>Max.</p>
-                <input type="number" placeholder="850" />
+                <input
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                  value={maxPrice}
+                  type="number"
+                  placeholder="850"
+                />
               </div>
             </div>
 
-            <button>Update</button>
-          </div>
-          <h3>B2B</h3>
-          <div className="product-shop-filter-section4">
-            <input type="checkbox" id="b2b" name="b2b" value="b2b" />
-            <label for="vehicle1"> B2B Products Only</label>
-            <br></br>
+            <button onClick={hanldeActivePrice}>Update</button>
           </div>
           <h3>Color</h3>
           <div className="product-shop-filter-section5">
             <div>
               <input
+                onClick={() => handleActiveColor("Blue")}
                 style={{ backgroundColor: "blue" }}
                 type="radio"
-                id="html"
+                id="id_blue"
                 name="fav_language"
-                value="HTML"
+                value="Blue"
               />
-                <label for="html">Blue</label>
+                <label for="id_blue">Blue</label>
             </div>
             <div>
               <input
+                onClick={() => handleActiveColor("Black")}
                 style={{ backgroundColor: "black" }}
                 type="radio"
-                id="html"
+                id="id_black"
                 name="fav_language"
                 value="HTML"
               />
-                <label for="html">Black</label>
+                <label for="id_black">Black</label>
             </div>
             <div>
               <input
+                onClick={() => handleActiveColor("White")}
                 style={{ backgroundColor: "white" }}
                 type="radio"
-                id="html"
+                id="id_white"
                 name="fav_language"
                 value="HTML"
               />
-                <label for="html">White</label>
+                <label for="id_white">White</label>
             </div>
           </div>
           <h3>Type</h3>
           <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> USB 3.0 Type-A</label>
+            <input
+              onClick={() => handleActiveType("T-shirt")}
+              type="checkbox"
+              id="id_t-shirt"
+            />
+            <label for="id_t-shirt">T-shirt</label>
             <br></br>
           </div>
+          <div className="product-shop-filter-section4">
+            <input
+              onClick={() => handleActiveType("Trouser")}
+              type="checkbox"
+              id="id_trouser"
+            />
+            <label for="id_trouser">Trouser</label>
+            <br></br>
+          </div>
+
           <h3>Material</h3>
           <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> Cotton</label>
+            <input
+              onClick={() => handleActiveMaterial("Cotton")}
+              type="checkbox"
+              id="id_cotton"
+            />
+            <label for="id_cotton">Cotton</label>
+            <br></br>
+          </div>
+          <div className="product-shop-filter-section4">
+            <input
+              onClick={() => handleActiveMaterial("Fabric")}
+              type="checkbox"
+              id="id_fabric"
+            />
+            <label for="id_fabric">Fabric</label>
             <br></br>
           </div>
           <h3>Size</h3>
           <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1">S</label>
+            <input
+              onClick={() => handleActiveSize("S")}
+              type="checkbox"
+              id="id_s"
+            />
+            <label for="id_s">S</label>
             <br></br>
           </div>
           <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1">M</label>
+            <input
+              onClick={() => handleActiveSize("M")}
+              type="checkbox"
+              id="id_m"
+            />
+            <label for="id_m">M</label>
             <br></br>
           </div>
           <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> L</label>
+            <input
+              onClick={() => handleActiveSize("L")}
+              type="checkbox"
+              id="id_l"
+            />
+            <label for="id_l">L</label>
             <br></br>
           </div>
-          <h3>Impedance</h3>
+          {/* <h3>Impedance</h3>
           <div className="product-shop-filter-section4">
             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
             <label for="vehicle1"> 32 Ω</label>
@@ -173,17 +415,32 @@ const ProductShop = () => {
             <label for="vehicle1"> Realme</label>
             <br></br>
           </div>
-          <h4>See All</h4>
+          <h4>See All</h4> */}
           <h3>Rating</h3>
           <div className="product-shop-filter-section6">
             <div>
-              <IoIosStar />
-              <IoIosStar />
-              <IoIosStar />
-              <IoIosStar />
-              <IoIosStar />
+              <IoIosStar
+                className={rating >= 1 ? "yellowstars" : "graystar"}
+                onClick={() => handleActiveRating(1)}
+              />
+              <IoIosStar
+                className={rating >= 2 ? "yellowstars" : "graystar"}
+                onClick={() => handleActiveRating(2)}
+              />
+              <IoIosStar
+                className={rating >= 3 ? "yellowstars" : "graystar"}
+                onClick={() => handleActiveRating(3)}
+              />
+              <IoIosStar
+                className={rating >= 4 ? "yellowstars" : "graystar"}
+                onClick={() => handleActiveRating(4)}
+              />
+              <IoIosStar
+                className={rating >= 5 ? "yellowstars" : "graystar"}
+                onClick={() => handleActiveRating(5)}
+              />
             </div>
-            <p>0 Stars</p>
+            <p>{rating} Stars</p>
           </div>
         </div>
         <div className="product-shop-items">
@@ -283,102 +540,19 @@ const ProductShop = () => {
             </div>
           </div>
           <div className="products-shop-items-content">
-            <ProductShopCard
-              profile="profile1.png"
-              image="productShopCard1.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={true}
-              rating={0}
-            />
-            <ProductShopCard
-              profile="profile2.png"
-              image="productShopCard2.png"
-              text="Electronic Accessories"
-              heading="USB Type C Cable 2 In 1 Fast Charging Cord Data Sync..."
-              featured={true}
-              rating={4}
-            />
-            <ProductShopCard
-              profile="profile1.png"
-              image="productShopCard3.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={true}
-              rating={0}
-            />
-            <ProductShopCard
-              profile="profile2.png"
-              image="productShopCard4.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={false}
-              rating={0}
-            />
-            <ProductShopCard
-              profile="profile1.png"
-              image="productShopCard5.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={true}
-              rating={0}
-            />
-            <ProductShopCard
-              profile="profile2.png"
-              image="productShopCard6.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={true}
-              rating={4.001}
-            />
-            <ProductShopCard
-              profile="profile1.png"
-              image="productShopCard7.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={true}
-              rating={3.57}
-            />
-            <ProductShopCard
-              profile="profile2.png"
-              image="productShopCard8.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={false}
-              rating={2.65}
-            />
-            <ProductShopCard
-              profile="profile1.png"
-              image="productShopCard9.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={true}
-              rating={1}
-            />
-            <ProductShopCard
-              profile="profile2.png"
-              image="productShopCard10.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={true}
-              rating={1.67}
-            />
-            <ProductShopCard
-              profile="profile1.png"
-              image="productShopCard11.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={false}
-              rating={5}
-            />
-            <ProductShopCard
-              profile="profile2.png"
-              image="productShopCard12.png"
-              text="Uncategorized"
-              heading="dfsdfcd"
-              featured={false}
-              rating={0.6}
-            />
+            {filterData?.map((item) => {
+              return (
+                <ProductShopCard
+                  profile="profile1.png"
+                  image="productShopCard1.png"
+                  text={item.category}
+                  heading="dfsdfcd"
+                  featured={true}
+                  rating={item.rating}
+                  price={item.price}
+                />
+              );
+            })}
           </div>
           <div className="product-ship-pagination">
             <Pagination />

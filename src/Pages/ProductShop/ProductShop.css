@@ -35,9 +35,16 @@
   align-items: center;
   gap: 8px;
 }
+.product-shop-filter-section1 > div:hover {
+  cursor: pointer;
+}
 .product-shop-filter-section1 > div > p {
   font-size: 14px;
   font-weight: 600;
+  transition: all 0.5s ease;
+}
+.product-shop-filter-section1 > div > p:hover {
+  color: #444444;
 }
 .product-shop-filter > h3 {
   margin-top: 50px;
@@ -54,6 +61,11 @@
 .product-shop-filter-section2 > h6 {
   font-size: 18px;
   font-weight: 600;
+  transition: all 0.5s ease;
+}
+.product-shop-filter-section2 > h6:hover {
+  cursor: pointer;
+  color: #444444;
 }
 .product-shop-filter-section2 > h6 > b {
   color: #444444;
@@ -84,6 +96,7 @@
   padding: 5px;
   font-size: 18px;
   font-weight: 600;
+  color: #444444;
 }
 .product-shop-filter-section3 > button {
   border: 1px solid gainsboro;
@@ -158,7 +171,7 @@
   border: 1px solid gainsboro;
 }
 .product-shop-filter-section5 > div > input:checked {
-  transform: scale(1.2);
+  border: 5px solid rgba(255, 0, 0, 0.473);
 }
 .product-shop-filter-section5 > div > label {
   font-size: 18px;
@@ -176,10 +189,13 @@
   gap: 15px;
 }
 .product-shop-filter-section6 > div > svg {
-  fill: #999999;
   width: 30px;
   height: 30px;
 }
+.product-shop-filter-section6 > div > svg:hover {
+  opacity: 0.4;
+}
+
 .product-shop-filter-section6 > p {
   font-size: 18px;
   font-weight: 600;

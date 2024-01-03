@@ -33,6 +33,14 @@
   padding: 15px 80px;
   border: none;
   border-radius: 6px;
+  transition: all 0.5s ease;
+}
+.about-around-section2 > button:hover {
+  background-color: #444444;
+  cursor: pointer;
+}
+.about-around-section2 > button:active {
+  transform: scale(90%);
 }
 @media (max-width: 1250px) {
   .about-around-section1 > h4 {

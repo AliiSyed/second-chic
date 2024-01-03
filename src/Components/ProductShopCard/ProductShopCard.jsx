@@ -9,6 +9,7 @@ const ProductShopCard = ({
   rating,
   featured,
   image,
+  price,
 }) => {
   let yellowStars = [];
   let greyStars = [];
@@ -35,6 +36,7 @@ const ProductShopCard = ({
       <div className="product-shop-card-text">
         <p>{text}</p>
         <h6>{heading}</h6>
+        <h4>${price}</h4>
         <div>
           {yellowStars}
           {greyStars}

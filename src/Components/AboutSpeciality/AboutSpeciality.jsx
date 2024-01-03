@@ -14,14 +14,12 @@ const AboutSpeciality = () => {
       </div>
       <div className="about-speaciality-section2">
         <AboutSpecialityCard
-          heading="Over 1+ Million
-Regular Customers"
+          heading="Over 1+ Million Regular Customers"
           text="You receive your product on time regardless of your location. Conditions applied."
           icon="Icon1.png"
         />
         <AboutSpecialityCard
-          heading="Regular’s 
-Offers & Discounts"
+          heading="Regular’s Offers & Discounts"
           text="We are in collaboration among the finest brands all around the whole world"
           icon="Icon2.png"
         />
@@ -31,8 +29,7 @@ Offers & Discounts"
           icon="Icon3.png"
         />
         <AboutSpecialityCard
-          heading="Worlwirde
-Free Shipping"
+          heading="Worlwide Free Shipping"
           text="You receive your product on time regardless of your location. Conditions applied."
           icon="Icon4.png"
         />

@@ -13,9 +13,10 @@ const ProductDetail = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 5,
     slidesToScroll: 1,
+    pauseOnHover: false,
   };
   return (
     <div className="my-container">

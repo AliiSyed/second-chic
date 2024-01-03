@@ -82,3 +82,6 @@ body {
     width: 300px;
   }
 }
+.graystar {
+  fill: #999999;
+}
