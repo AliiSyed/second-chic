@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ProductShop.css";
 import ProductShopCard from "../../Components/ProductShopCard/ProductShopCard.jsx";
 import Pagination from "../../Components/Pagination/Pagination.jsx";
+import NoProduct from "../../Components/NoProduct/NoProduct.jsx";
 import { IoIosStar } from "react-icons/io";
 import productsData from "../../Data/product.json";
 const ProductShop = () => {
@@ -10,6 +11,11 @@ const ProductShop = () => {
   const [activeType, setActiveType] = useState([]);
   const [activeMaterial, setActiveMaterial] = useState([]);
   const [activeSize, setActiveSize] = useState([]);
+  const [activeFeatured, setActiveFeatured] = useState(false);
+  const [activeProductStyle, setActiveProductStyle] = useState(false);
+  const [activeShow, setActiveShow] = useState(12);
+  const [activeSort, setActiveSort] = useState("price-asc");
+  const [activeCondition, setActiveCondition] = useState([]);
 
   const [filterData, setFilterData] = useState(productsData.products);
 
@@ -26,14 +32,14 @@ const ProductShop = () => {
     color,
     type,
     material,
-    size
+    size,
+    featured,
+    sort,
+    condition
   ) => {
     setFilterData(productsData.products);
 
     let filteredData = productsData.products.filter((item) => {
-      console.log("size", size);
-      console.log("size", item.size);
-      console.log("size", size.includes(item.size) || size.length === 0);
       return (
         (item.category === category || category === "") &&
         item.price >= minPrice &&
@@ -42,9 +48,21 @@ const ProductShop = () => {
         (item.color === color || color === "") &&
         (type.includes(item.type) || type.length === 0) &&
         (material.includes(item.material) || material.length === 0) &&
-        (size.includes(item.size) || size.length === 0)
+        (size.includes(item.size) || size.length === 0) &&
+        (featured ? item.features : true) &&
+        (condition.includes(item.condition) || condition.length === 0)
       );
     });
+    if (sort === "price-asc") {
+      filteredData = filteredData.slice().sort((a, b) => a.price - b.price);
+    } else if (sort === "price-dsc") {
+      filteredData = filteredData.slice().sort((a, b) => b.price - a.price);
+    } else if (sort === "rating-dsc") {
+      filteredData = filteredData.slice().sort((a, b) => b.rating - a.rating);
+    } else {
+      console.error("Invalid sort value:", sort);
+    }
+    console.log(filterData);
     setFilterData(filteredData);
   };
 
@@ -57,7 +75,10 @@ const ProductShop = () => {
       activeColor,
       activeType,
       activeMaterial,
-      activeSize
+      activeSize,
+      activeFeatured,
+      activeSort,
+      activeCondition
     );
   };
 
@@ -71,7 +92,10 @@ const ProductShop = () => {
       activeColor,
       activeType,
       activeMaterial,
-      activeSize
+      activeSize,
+      activeFeatured,
+      activeSort,
+      activeCondition
     );
   };
 
@@ -85,7 +109,10 @@ const ProductShop = () => {
       activeColor,
       activeType,
       activeMaterial,
-      activeSize
+      activeSize,
+      activeFeatured,
+      activeSort,
+      activeCondition
     );
   };
 
@@ -99,7 +126,10 @@ const ProductShop = () => {
       value,
       activeType,
       activeMaterial,
-      activeSize
+      activeSize,
+      activeFeatured,
+      activeSort,
+      activeCondition
     );
   };
 
@@ -117,9 +147,13 @@ const ProductShop = () => {
       activeColor,
       newValue,
       activeMaterial,
-      activeSize
+      activeSize,
+      activeFeatured,
+      activeSort,
+      activeCondition
     );
   };
+
   const handleActiveMaterial = (value) => {
     let newValue = activeMaterial;
     newValue = newValue.includes(value)
@@ -134,9 +168,13 @@ const ProductShop = () => {
       activeColor,
       activeType,
       newValue,
-      activeSize
+      activeSize,
+      activeFeatured,
+      activeSort,
+      activeCondition
     );
   };
+
   const handleActiveSize = (value) => {
     let newValue = activeSize;
     newValue = newValue.includes(value)
@@ -151,9 +189,73 @@ const ProductShop = () => {
       activeColor,
       activeType,
       activeMaterial,
+      newValue,
+      activeFeatured,
+      activeSort,
+      activeCondition
+    );
+  };
+
+  const handleActiveFeatured = () => {
+    setActiveFeatured((prev) => !prev);
+    handleFilteration(
+      activeCategory,
+      minPrice,
+      maxPrice,
+      rating,
+      activeColor,
+      activeType,
+      activeMaterial,
+      activeSize,
+      !activeFeatured,
+      activeSort,
+      activeCondition
+    );
+  };
+
+  const handleActiveShow = (e) => {
+    setActiveShow(e.target.value);
+  };
+
+  const handleActiveSort = (e) => {
+    console.log(e.target.value);
+    setActiveSort(e.target.value);
+    handleFilteration(
+      activeCategory,
+      minPrice,
+      maxPrice,
+      rating,
+      activeColor,
+      activeType,
+      activeMaterial,
+      activeSize,
+      activeFeatured,
+      e.target.value,
+      activeCondition
+    );
+  };
+
+  const handleActiveCondition = (value) => {
+    let newValue = activeCondition;
+    newValue = newValue.includes(value)
+      ? newValue.filter((item) => item !== value)
+      : [...newValue, value];
+    setActiveCondition(newValue);
+    handleFilteration(
+      activeCategory,
+      minPrice,
+      maxPrice,
+      rating,
+      activeColor,
+      activeType,
+      activeMaterial,
+      activeSize,
+      activeFeatured,
+      activeSort,
       newValue
     );
   };
+
   const hanldleResetFilter = () => {
     setFilterData(productsData.products);
     setActiveCategory("");
@@ -161,6 +263,7 @@ const ProductShop = () => {
     setActiveType([]);
     setActiveMaterial([]);
     setActiveSize([]);
+    setActiveFeatured(false);
     setRating(0);
     setMinPrice(0);
     setMaxPrice(5000);
@@ -270,6 +373,17 @@ const ProductShop = () => {
 
             <button onClick={hanldeActivePrice}>Update</button>
           </div>
+          <h3>Featured</h3>
+          <div className="product-shop-filter-section4">
+            <input
+              onClick={() => handleActiveFeatured()}
+              type="checkbox"
+              id="id_featured"
+              checked={activeFeatured}
+            />
+            <label for="id_featured">Featured</label>
+            <br></br>
+          </div>
           <h3>Color</h3>
           <div className="product-shop-filter-section5">
             <div>
@@ -280,6 +394,7 @@ const ProductShop = () => {
                 id="id_blue"
                 name="fav_language"
                 value="Blue"
+                checked={activeColor === "Blue"}
               />
                 <label for="id_blue">Blue</label>
             </div>
@@ -291,6 +406,7 @@ const ProductShop = () => {
                 id="id_black"
                 name="fav_language"
                 value="HTML"
+                checked={activeColor === "Black"}
               />
                 <label for="id_black">Black</label>
             </div>
@@ -302,6 +418,7 @@ const ProductShop = () => {
                 id="id_white"
                 name="fav_language"
                 value="HTML"
+                checked={activeColor === "White"}
               />
                 <label for="id_white">White</label>
             </div>
@@ -312,6 +429,7 @@ const ProductShop = () => {
               onClick={() => handleActiveType("T-shirt")}
               type="checkbox"
               id="id_t-shirt"
+              checked={activeType.includes("T-shirt")}
             />
             <label for="id_t-shirt">T-shirt</label>
             <br></br>
@@ -321,6 +439,7 @@ const ProductShop = () => {
               onClick={() => handleActiveType("Trouser")}
               type="checkbox"
               id="id_trouser"
+              checked={activeType.includes("Trouser")}
             />
             <label for="id_trouser">Trouser</label>
             <br></br>
@@ -332,6 +451,7 @@ const ProductShop = () => {
               onClick={() => handleActiveMaterial("Cotton")}
               type="checkbox"
               id="id_cotton"
+              checked={activeMaterial.includes("Cotton")}
             />
             <label for="id_cotton">Cotton</label>
             <br></br>
@@ -341,8 +461,40 @@ const ProductShop = () => {
               onClick={() => handleActiveMaterial("Fabric")}
               type="checkbox"
               id="id_fabric"
+              checked={activeMaterial.includes("Fabric")}
             />
             <label for="id_fabric">Fabric</label>
+            <br></br>
+          </div>
+          <h3>Condition</h3>
+          <div className="product-shop-filter-section4">
+            <input
+              onClick={() => handleActiveCondition("good")}
+              type="checkbox"
+              id="id_good"
+              checked={activeCondition.includes("good")}
+            />
+            <label for="id_good">Good</label>
+            <br></br>
+          </div>
+          <div className="product-shop-filter-section4">
+            <input
+              onClick={() => handleActiveCondition("satisfactory")}
+              type="checkbox"
+              id="id_satisfactory"
+              checked={activeCondition.includes("satisfactory")}
+            />
+            <label for="id_satisfactory">Satisfactory</label>
+            <br></br>
+          </div>
+          <div className="product-shop-filter-section4">
+            <input
+              onClick={() => handleActiveCondition("excellent")}
+              type="checkbox"
+              id="id_excellent"
+              checked={activeCondition.includes("excellent")}
+            />
+            <label for="id_excellent">Excellent</label>
             <br></br>
           </div>
           <h3>Size</h3>
@@ -351,6 +503,7 @@ const ProductShop = () => {
               onClick={() => handleActiveSize("S")}
               type="checkbox"
               id="id_s"
+              checked={activeSize.includes("S")}
             />
             <label for="id_s">S</label>
             <br></br>
@@ -360,6 +513,7 @@ const ProductShop = () => {
               onClick={() => handleActiveSize("M")}
               type="checkbox"
               id="id_m"
+              checked={activeSize.includes("M")}
             />
             <label for="id_m">M</label>
             <br></br>
@@ -369,53 +523,51 @@ const ProductShop = () => {
               onClick={() => handleActiveSize("L")}
               type="checkbox"
               id="id_l"
+              checked={activeSize.includes("L")}
             />
             <label for="id_l">L</label>
             <br></br>
           </div>
-          {/* <h3>Impedance</h3>
           <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> 32 Ω</label>
-            <br></br>
-          </div>
-          <h3>Brand</h3>
-          <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1">Samsung</label>
-            <br></br>
-          </div>
-          <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> Infinix</label>
+            <input
+              onClick={() => handleActiveSize("8")}
+              type="checkbox"
+              id="id_8"
+              checked={activeSize.includes("8")}
+            />
+            <label for="id_8">8</label>
             <br></br>
           </div>
           <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> Yellow</label>
+            <input
+              onClick={() => handleActiveSize("7")}
+              type="checkbox"
+              id="id_7"
+              checked={activeSize.includes("7")}
+            />
+            <label for="id_7">7</label>
             <br></br>
           </div>
           <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> Aarong</label>
+            <input
+              onClick={() => handleActiveSize("6")}
+              type="checkbox"
+              id="id_6"
+              checked={activeSize.includes("6")}
+            />
+            <label for="id_6">6</label>
             <br></br>
           </div>
           <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> Walton</label>
+            <input
+              onClick={() => handleActiveSize("5")}
+              type="checkbox"
+              id="id_5"
+              checked={activeSize.includes("5")}
+            />
+            <label for="id_5">5</label>
             <br></br>
           </div>
-          <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> Huawei</label>
-            <br></br>
-          </div>
-          <div className="product-shop-filter-section4">
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"> Realme</label>
-            <br></br>
-          </div>
-          <h4>See All</h4> */}
           <h3>Rating</h3>
           <div className="product-shop-filter-section6">
             <div>
@@ -445,28 +597,36 @@ const ProductShop = () => {
         </div>
         <div className="product-shop-items">
           <div className="products-shop-items-header">
-            <h2>77 products found</h2>
+            <h2>{filterData.length} products found</h2>
             <div>
               <div>
                 <p>Sort Bt:</p>
-                <select id="cars" name="carlist" form="carform">
-                  <option value="volvo">Price Low to High</option>
-                  <option value="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
+                <select id="product-sort" onChange={handleActiveSort}>
+                  <option value="price-asc">Price Low to High</option>
+                  <option value="price-dsc">Price High to Low</option>
+                  <option value="rating-dsc">Rating High to Low</option>
                 </select>
               </div>
               <div>
                 <p>Showing</p>
-                <select id="cars" name="carlist" form="carform">
-                  <option value="volvo">12</option>
-                  <option value="saab">1</option>
-                  <option value="opel">13</option>
-                  <option value="audi">10</option>
+                <select
+                  onChange={handleActiveShow}
+                  id="cars"
+                  name="carlist"
+                  form="carform"
+                >
+                  <option value={12}>12</option>
+                  <option value={24}>24</option>
+                  <option value={48}>48</option>
                 </select>
               </div>
               <svg
-                class="-mb-5p -ml-3p"
+                className={
+                  !activeProductStyle
+                    ? "product-shop-filter-icon-active"
+                    : "product-shop-filter-icon"
+                }
+                onClick={() => setActiveProductStyle(!activeProductStyle)}
                 width="19"
                 height="19"
                 viewBox="0 0 19 19"
@@ -508,7 +668,12 @@ const ProductShop = () => {
                 ></path>
               </svg>
               <svg
-                class="-mb-5p neg-transition-scale"
+                className={
+                  activeProductStyle
+                    ? "product-shop-filter-icon-active"
+                    : "product-shop-filter-icon"
+                }
+                onClick={() => setActiveProductStyle(!activeProductStyle)}
                 width="24"
                 height="19"
                 viewBox="0 0 24 19"
@@ -539,23 +704,36 @@ const ProductShop = () => {
               </svg>
             </div>
           </div>
-          <div className="products-shop-items-content">
-            {filterData?.map((item) => {
-              return (
-                <ProductShopCard
-                  profile="profile1.png"
-                  image="productShopCard1.png"
-                  text={item.category}
-                  heading="dfsdfcd"
-                  featured={true}
-                  rating={item.rating}
-                  price={item.price}
-                />
-              );
-            })}
+          <div
+            className={
+              !activeProductStyle
+                ? "products-shop-items-content"
+                : "products-shop-items-content-list"
+            }
+          >
+            {filterData.length !== 0 ? (
+              filterData?.map((item, index) => {
+                if (index <= activeShow - 1) {
+                  return (
+                    <ProductShopCard
+                      image={item.image}
+                      text={item.category}
+                      heading="dfsdfcd"
+                      featured={item.features}
+                      rating={item.rating}
+                      price={item.price}
+                      displayType={activeProductStyle}
+                    />
+                  );
+                }
+                return null;
+              })
+            ) : (
+              <NoProduct hanldleResetFilter={hanldleResetFilter} />
+            )}
           </div>
           <div className="product-ship-pagination">
-            <Pagination />
+            <Pagination quantity={filterData.length} showing={activeShow} />
           </div>
         </div>
       </div>

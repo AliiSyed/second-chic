@@ -9,22 +9,39 @@
   border-radius: 15px;
   padding: 10px;
 }
-.product-shop-card > img {
-  align-self: self-start;
+.product-shop-card-list {
+  display: flex;
+  align-self: flex-start;
+  width: fit-content;
+  border: 2px solid gainsboro;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 60px;
 }
-.product-shop-card > img:hover {
-  cursor: pointer;
+.product-shop-card-list > div {
+  width: 250px !important;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.product-shop-card-list > div:last-child {
+  align-self: center;
+  margin-left: 100px;
+}
+.product-shop-card-list > div:last-child > * {
+  width: 100%;
+  text-align: start;
+}
+.product-shop-card-list > div:last-child > div {
+  justify-content: flex-start;
 }
 .product-shop-card-image {
-  background-image: url("/public/images/popularCard.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   height: 200px;
   width: 100%;
   border-radius: 10px;
-  border: 2px solid gainsboro;
-  padding: 10px;
 }
 .product-shop-card-image > p {
   background-color: var(--primary-color);
@@ -75,6 +92,17 @@
 .yellowstars {
   color: #fcca19 !important;
 }
+
+@media (max-width: 1600px) {
+  .product-shop-card {
+    width: 300px;
+  }
+}
+@media (max-width: 1440px) {
+  .product-shop-card {
+    width: 270px;
+  }
+}
 @media (max-width: 1250px) {
   .product-shop-card {
     width: 300px;
@@ -83,5 +111,11 @@
 @media (max-width: 768px) {
   .product-shop-card {
     width: 100%;
+  }
+  .product-shop-card-list > div {
+    margin-left: 0px;
+  }
+  .product-shop-card-list > div:last-child {
+    margin-left: 0px;
   }
 }
