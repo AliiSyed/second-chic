@@ -2,7 +2,7 @@
   "products": [
     {
       "image": "productShopCard1.png",
-      "title": "Smart 4K Ultra HD TV",
+      "title": "Napkins",
       "category": "Uncategorized",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
       "rating": 0.33,
@@ -17,7 +17,7 @@
     },
     {
       "image": "productShopCard2.png",
-      "title": "Smart 4K Ultra HD TV1",
+      "title": "Sofa",
       "category": "Uncategorized",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
       "rating": 0.66,
@@ -32,7 +32,7 @@
     },
     {
       "image": "productShopCard3.png",
-      "title": "Smart 4K Ultra HD TV2",
+      "title": "Babies Dress",
       "category": "Uncategorized",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
       "rating": 1,
@@ -256,7 +256,7 @@
       "condition": "good"
     },
     {
-      "image": "productShopCard1.png",
+      "image": "computer/computer1.jpg",
       "title": "Smart 4K Ultra HD TV",
       "category": "Computer Accessories",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
@@ -271,7 +271,7 @@
       "condition": "good"
     },
     {
-      "image": "productShopCard1.png",
+      "image": "computer/computer2.jpg",
       "title": "Smart 4K Ultra HD TV",
       "category": "Computer Accessories",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
@@ -286,7 +286,7 @@
       "condition": "good"
     },
     {
-      "image": "productShopCard1.png",
+      "image": "computer/computer3.jpg",
       "title": "Smart 4K Ultra HD TV",
       "category": "Computer Accessories",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
@@ -301,7 +301,7 @@
       "condition": "good"
     },
     {
-      "image": "productShopCard1.png",
+      "image": "computer/computer4.jpg",
       "title": "Smart 4K Ultra HD TV",
       "category": "Computer Accessories",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
@@ -316,7 +316,7 @@
       "condition": "good"
     },
     {
-      "image": "productShopCard1.png",
+      "image": "computer/computer5.jpg",
       "title": "Smart 4K Ultra HD TV",
       "category": "Computer Accessories",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
@@ -331,7 +331,7 @@
       "condition": "good"
     },
     {
-      "image": "productShopCard1.png",
+      "image": "computer/computer6.jpg",
       "title": "Smart 4K Ultra HD TV",
       "category": "Computer Accessories",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
@@ -346,7 +346,7 @@
       "condition": "good"
     },
     {
-      "image": "productShopCard1.png",
+      "image": "computer/computer7.jpg",
       "title": "Smart 4K Ultra HD TV1",
       "category": "Computer Accessories",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
@@ -361,7 +361,7 @@
       "condition": "good"
     },
     {
-      "image": "productShopCard1.png",
+      "image": "computer/computer8.jpg",
       "title": "Smart 4K Ultra HD TV2",
       "category": "Computer Accessories",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
@@ -571,7 +571,7 @@
       "condition": "satisfactory"
     },
     {
-      "image": "productShopCard1.png",
+      "image": "computer/computer9.jpg",
       "title": "Smart 4K Ultra HD TV",
       "category": "Computer Accessories",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],
@@ -586,7 +586,7 @@
       "condition": "good"
     },
     {
-      "image": "productShopCard1.png",
+      "image": "computer/computer10.jpg",
       "title": "Smart 4K Ultra HD TV1",
       "category": "Computer Accessories",
       "relatedCategory": ["Electronics", "Electronics", "Electronics"],

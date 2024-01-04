@@ -718,7 +718,7 @@ const ProductShop = () => {
                     <ProductShopCard
                       image={item.image}
                       text={item.category}
-                      heading="dfsdfcd"
+                      heading={item.title}
                       featured={item.features}
                       rating={item.rating}
                       price={item.price}
