@@ -1,6 +1,7 @@
 import React from "react";
 import "./ProductShopCard.css";
 import { IoIosStar } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 const ProductShopCard = ({
   text,
   heading,
@@ -18,8 +19,10 @@ const ProductShopCard = ({
   for (let index = 0; index < 5 - Math.floor(rating); index++) {
     greyStars.push(<IoIosStar />);
   }
+  const navigate = useNavigate();
   return (
     <div
+      onClick={() => navigate("/products/123456789/details")}
       className={displayType ? "product-shop-card-list" : "product-shop-card"}
     >
       <div

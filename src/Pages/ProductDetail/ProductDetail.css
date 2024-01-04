@@ -136,18 +136,22 @@
   font-weight: 600;
   color: #444444;
 }
-.product-detail-text-section2 > div > select {
+.product-detail-text-section2 > div > div {
   border: 1px solid gainsboro;
   padding: 10px;
   border-radius: 5px;
-  font-size: 18px;
-  width: 65%;
+  width: 50px;
+  background-color: skyblue;
 }
 .product-detail-text-section3 {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 20px;
   margin-top: 40px;
+}
+.product-detail-text-section3 > button:last-child {
+  background-color: var(--primary-color);
 }
 .product-detail-text-section3 > div {
   display: flex;

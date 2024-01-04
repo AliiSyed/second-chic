@@ -5,8 +5,8 @@ import { IoIosStar } from "react-icons/io";
 import { CiShare2 } from "react-icons/ci";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoIosGitCompare } from "react-icons/io";
-import { FiMinus, FiPlus } from "react-icons/fi";
 import { BsCart2 } from "react-icons/bs";
+import { MdOutlineDiscount } from "react-icons/md";
 import RelatedProductCard from "../../Components/RelatedProductCard/RelatedProductCard.jsx";
 import MoreProduct from "../../Components/MoreProduct/MoreProduct.jsx";
 const ProductDetail = () => {
@@ -85,10 +85,7 @@ const ProductDetail = () => {
               <p>Brand: Yellow</p>
               <p>SKU: MV0173</p>
             </div>
-            <h3>
-              Woman Korean O-neck Knitted Pullovers Thick Autumn Winter Candy
-              Color Loose Hoodies Solid Womens Clothing
-            </h3>
+            <h3>USB Connector and type C port</h3>
             <div className="product-detail-text-section1">
               <div>
                 <IoIosStar />
@@ -105,30 +102,25 @@ const ProductDetail = () => {
                 <IoIosGitCompare />
               </div>
             </div>
-            <h4>$89 - $89</h4>
+            <h4>$89</h4>
             <div className="product-detail-text-section2">
               <div>
                 <p>Color</p>
-                <select>
-                  <option>Select One</option>
-                </select>
+                <div></div>
               </div>
               <div>
                 <p>Size</p>
-                <select>
-                  <option>Select One</option>
-                </select>
+                <p>Large</p>
               </div>
             </div>
             <div className="product-detail-text-section3">
-              <div>
-                <FiMinus />
-                <p>1</p>
-                <FiPlus />
-              </div>
               <button>
                 <BsCart2 />
                 <p>Add to Cart</p>
+              </button>
+              <button>
+                <MdOutlineDiscount />
+                <p>Make an Offer</p>
               </button>
             </div>
           </div>
